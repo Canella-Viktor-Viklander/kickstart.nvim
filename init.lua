@@ -98,12 +98,19 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- NOTE: When using bash for windows some flags will be set according to the OS
+-- Following changes are necessary to make certain features work as expected.
+-- Should not be enabled on linux machines.
 vim.o.shell = 'bash'
 vim.o.shellcmdflag = '-c'
 vim.o.shellpipe = '>'
 vim.o.shellquote = ''
 vim.o.shellxquote = ''
 vim.o.shellslash = true
+
+vim.keymap.set('n', '<space><space>x', '<cmd>source %<CR>')
+vim.keymap.set('n', '<space>x', ':.lua<CR>')
+vim.keymap.set('v', '<space>x', ':lua<CR>')
 
 -- Make line numbers default
 vim.opt.number = true
@@ -259,18 +266,19 @@ require('lazy').setup({
   -- options to `gitsigns.nvim`.
   --
   -- See `:help gitsigns` to understand what the configuration keys do
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
-  },
+  -- [[{ -- Adds git related signs to the gutter, as well as utilities for managing changes
+  -- 'lewis6991/gitsigns.nvim',
+  -- opts = {
+  --   signs = {
+  --     add = { text = '+' },
+  --     change = { text = '~' },
+  --     delete = { text = '_' },
+  --     topdelete = { text = '‾' },
+  --     changedelete = { text = '~' },
+  --   },
+  -- },
+  --},
+  -- ]]
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
@@ -1014,8 +1022,8 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
-  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-  --  require 'kickstart.plugins.dadbod',
+  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  -- require 'kickstart.plugins.dadbod',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
