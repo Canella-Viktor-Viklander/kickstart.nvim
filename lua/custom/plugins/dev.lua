@@ -1,3 +1,6 @@
 return {
-	-- { dir = '~/plugins/present.nvim' },
+  {
+    dir = '~/AppData/Local/nvim/plugins/present.nvim',
+    config = function() end,
+  },
 }
