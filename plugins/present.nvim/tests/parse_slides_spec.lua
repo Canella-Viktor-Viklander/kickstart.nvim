@@ -2,7 +2,7 @@
 
 local parse = require('present')._parse_slides
 
-local eq = assert.art.same
+local eq = assert.are.same
 
 describe('present.parse_slides', function()
   it('should parse an empty file', function()
